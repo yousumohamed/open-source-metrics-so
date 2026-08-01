@@ -3,7 +3,7 @@
 [![npm package](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/)
 [![TypeScript 5+](https://img.shields.io/badge/TypeScript-5.0%2B-blue.svg)](https://www.typescriptlang.org/)
 [![License MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Coverage 99%](https://img.shields.io/badge/Coverage-99%25-brightgreen.svg)](https://jestjs.io/)
+[![Coverage 87%](https://img.shields.io/badge/Coverage-87.44%25-brightgreen.svg)](https://jestjs.io/)
 
 A high-performance Node.js/TypeScript analytics library designed to track developer ecosystem trends, contribution velocity, code frequency, and issue resolution metrics across emerging communities utilizing the GitHub GraphQL and REST APIs.
 
@@ -199,12 +199,40 @@ $$\text{Score} = (\text{Commits} \times 1.5) + (\text{PRs Merged} \times 3.0) + 
 
 ---
 
-## 🧪 Testing
+## 🧪 Testing & Code Coverage
 
 We employ the Jest testing suite alongside comprehensive mock coverage. Run tests using:
 
 ```bash
 npm run test
+```
+
+### Coverage Summary
+
+```text
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   87.44 |    70.88 |   88.57 |   87.44 |                   
+ src               |       0 |      100 |     100 |       0 |                   
+  index.ts         |       0 |      100 |     100 |       0 | 2-15              
+ src/config        |     100 |      100 |     100 |     100 |                   
+  constants.ts     |     100 |      100 |     100 |     100 |                   
+ src/models        |     100 |      100 |     100 |     100 |                   
+  ...oper.model.ts |     100 |      100 |     100 |     100 |                   
+  metrics.model.ts |     100 |      100 |     100 |     100 |                   
+ src/services      |   88.88 |    67.64 |    87.5 |   88.88 |                   
+  cache.service.ts |   90.47 |       80 |   83.33 |   90.47 | 36,61             
+  ...or.service.ts |     100 |      100 |     100 |     100 |                   
+  ...ub.service.ts |   86.72 |    63.15 |   85.71 |   86.72 | ...32,243,280-281 
+ src/utils         |   94.87 |     90.9 |    90.9 |   94.87 |                   
+  logger.ts        |     100 |    85.71 |     100 |     100 | 33                
+  rate-limiter.ts  |    91.3 |      100 |      75 |    91.3 | 49-50             
+-------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 3 passed, 3 total
+Tests:       17 passed, 17 total
+Snapshots:   0 total
 ```
 
 To run formatting and linting:

@@ -142,6 +142,7 @@ describe("GitHubService", () => {
 
     it("should throw error if there is no token", async () => {
       const tokenlessService = new GitHubService({
+        token: "",
         cacheService,
         rateLimiter,
       });
