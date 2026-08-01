@@ -7,3 +7,4 @@
 - Pull request contribution patch #6 for leaderboard ranking.
 - Pull request contribution patch #7 for leaderboard ranking.
 - Pull request contribution patch #8 for leaderboard ranking.
+- Pull request contribution patch #9 for leaderboard ranking.
