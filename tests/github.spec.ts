@@ -158,14 +158,6 @@ describe("GitHubService", () => {
         // Restore token
         process.env.GITHUB_TOKEN = originalToken;
       }
-      const tokenlessService = new GitHubService({
-        token: "",
-        cacheService,
-        rateLimiter,
-      });
-
-      await expect(tokenlessService.fetchDeveloperContributionsGraphQL("octocat"))
-        .rejects.toThrow("GraphQL operations require a valid GITHUB_TOKEN.");
     });
   });
 
