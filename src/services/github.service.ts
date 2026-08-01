@@ -22,7 +22,7 @@ export class GitHubService {
   constructor(config: GitHubServiceConfig = {}) {
     this.cache = config.cacheService || defaultCacheService;
     this.rateLimiter = config.rateLimiter || defaultRateLimiter;
-    const token = config.token !== undefined ? config.token : process.env.GITHUB_TOKEN;
+    const token = config.token || process.env.GITHUB_TOKEN;
     this.hasToken = !!token;
 
     const headers: Record<string, string> = {
