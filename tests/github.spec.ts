@@ -141,13 +141,23 @@ describe("GitHubService", () => {
     });
 
     it("should throw error if there is no token", async () => {
-      const tokenlessService = new GitHubService({
-        cacheService,
-        rateLimiter,
-      });
+      // Back up original token and temporarily delete it to prevent environment leakage
+      const originalToken = process.env.GITHUB_TOKEN;
+      delete process.env.GITHUB_TOKEN;
 
-      await expect(tokenlessService.fetchDeveloperContributionsGraphQL("octocat"))
-        .rejects.toThrow("GraphQL operations require a valid GITHUB_TOKEN.");
+      try {
+        const tokenlessService = new GitHubService({
+          token: "", // explicitly empty
+          cacheService,
+          rateLimiter,
+        });
+
+        await expect(tokenlessService.fetchDeveloperContributionsGraphQL("octocat"))
+          .rejects.toThrow("GraphQL operations require a valid GITHUB_TOKEN.");
+      } finally {
+        // Restore token
+        process.env.GITHUB_TOKEN = originalToken;
+      }
     });
   });
 
